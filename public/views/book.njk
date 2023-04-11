@@ -1,0 +1,38 @@
+{% extends 'index.njk' %}
+
+{% block title %}
+  <title>{{ book.titulo }} | {{book.autor}} </title>
+{% endblock %}
+
+{% block content %}
+  <section class="book-container">
+    <div class="image-container">
+      <img src="{{ book.imagem }}" />
+    </div>
+
+    <div class="book">
+      <p class="title">{{ book.titulo }}</p>
+      <p class="author">{{ book.autor }} | {{ book.editora }}</p>
+      <p class="publication">{{ book.ano_publicacao }}</p>
+      <p class="category">{{ title }}</p>
+    </div>
+  </section>
+
+  <section class="books-container">
+    <article class="category-movies">
+      <p class="category-title">{{ title }}</p>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for book in books %}
+            <div class="swiper-slide">
+              <a href="/livros/{{ book.id_livro }}">
+                <img height="365px" src="{{ book.imagem }}" alt=""></a>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </article>
+    </section>
+  {% endblock %}

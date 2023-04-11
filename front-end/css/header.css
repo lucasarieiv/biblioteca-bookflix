@@ -1,0 +1,34 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 32px 60px;
+}
+
+.logo-container .logo {
+  width: 111px;
+}
+
+.navigation {
+  margin-left: 48px;
+}
+
+.navigation a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--smoke-white);
+  transition: 300ms ease;
+}
+
+.navigation a:hover {
+  color: #fff;
+}
+
+.navigation a.-active {
+  font-weight: 700;
+}
+
+.navigation a + a {
+  margin-left: 24px;
+}
+

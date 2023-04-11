@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% block title %}
+      <title>BookFlix | Home</title>
+    {% endblock %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/swipper.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/books-container.css">
+    <link rel="stylesheet" href="/css/book-container.css">
+  
+</head>
+<body>
+  <header class="header">
+    <div class="logo-container">
+      <img class="logo" src="/img/neflix-logo.svg" alt="Netflix Logo">
+    </div>
+
+    <nav class="navigation">
+      <a class="-active" href="/">Início</a>
+      <a href="#">Livros</a>
+      <a href="#">Minha Lista</a>
+    </nav>
+
+    <!-- <div class="search-box">
+      <input type="text">
+    </div> -->
+  </header>
+
+  <main class="container">
+    {% block content %}
+    <section class="books-container">
+      {% if trendBooks.books | length %}
+        <article class="category-movies">
+          <p class="category-title">{{trendBooks.title}}</p>
+          <div class="swiper">
+            <div class="swiper-wrapper">
+
+              {% for book in trendBooks.books %}
+                  <div class="swiper-slide">
+                    <a href="livros/{{book.id_livro}}">
+                      <img height="365px" src="{{book.imagem}}" alt="">
+                    </a>
+                  </div>
+              {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </article>
+      {% endif %}
+
+      {% for booksCategory in listOfCategories %}
+        <article class="category-movies">
+          <p class="category-title">{{booksCategory.title}}</p>
+          <div class="swiper">
+            <div class="swiper-wrapper">
+
+              {% for book in booksCategory.books %}
+                  <div class="swiper-slide">
+                    <a href="livros/{{book.id_livro}}">
+                      <img height="365px" src="{{book.imagem}}" alt="">
+                    </a>
+                  </div>
+              {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </article>
+      {% endfor %}
+
+    </section>
+    {% endblock %}
+  </main>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper', {
+      slidesPerView: 8,
+      spaceBetween: 16,
+      direction: getDirection(),
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on: {
+        resize: function () {
+          swiper.changeDirection(getDirection());
+        },
+      },
+    });
+
+    function getDirection() {
+      var windowWidth = window.innerWidth;
+      var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+      return direction;
+    }
+
+  </script>
+</body>
+</html>

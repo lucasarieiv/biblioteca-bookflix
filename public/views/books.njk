@@ -1,0 +1,10 @@
+{% extends 'index.njk'%}
+{% block title %}
+  <title>BookFlix | Livros</title>
+{% endblock %}
+
+{% block content %}
+ {% for book in books %}
+  <li>{{book.titulo}}</li>
+ {% endfor %}
+{% endblock %}

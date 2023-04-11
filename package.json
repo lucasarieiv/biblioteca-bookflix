@@ -1,0 +1,19 @@
+{
+  "name": "Livraria",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon -e njk app.js "
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "5.0.0-alpha.2",
+    "mysql2": "^3.2.0",
+    "nunjucks": "^3.2.3"
+  }
+}

@@ -1,0 +1,16 @@
+.book-container {
+    display: flex;
+    padding: 1rem 5rem .5rem 5rem;
+    color: #fff;
+}
+
+.image-container {
+    padding: 1rem;
+}
+
+.book {
+}
+
+.book .title {
+    font-size: 4rem;
+}
